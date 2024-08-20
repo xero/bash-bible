@@ -1,0 +1,32 @@
+# 𝙄𝙂𝙉𝙊𝙍𝙀 𝙈𝙀!🙈
+_site/*
+Gemfile.lock
+Thumbs.db
+.DS_Store
+*.tmp
+*.log
+*~
+._*
+*._*
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+Session.vim
+tags
+Icon
+Network Trash Folder
+Temporary Items
+.netrwhist
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+.AppleDouble
+.LSOverride
+.apdisk
