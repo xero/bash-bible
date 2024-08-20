@@ -1,11 +1,10 @@
-title: Pure Bash Bible
+title: Bash Bible
 description: "{reference,survival} guild to bash scripting"
 url: https://xero.github.io/bash-bible
 collections:
   pages:
     output: true
     permalink: :path
-permalink: pretty
 highlighter: rouge
 kramdown:
   math_engine: mathjax

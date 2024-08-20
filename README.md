@@ -6,13 +6,13 @@ featuredLinks:
     - https://lab.x-e.ro/bash-bible
 ---
 
-# Pure Bash Bible
+# Bash Bible
 
 `{reference,survival}` guide to scripting in the bash shell
 
 ## History
 
-I do a lot of shell scripting, both personally and professionally. I've cited the, now defunct, original [Pure Bash Bible](https://github.com/dylanaraps/pure-bash-bible) a lot. But wished it had more general reference and tutorial type content. The author/maintainer [rage quit the internet](https://github.com/dylanaraps/dylanaraps/commit/811599cc564418e242f23a11082299323e7f62f8), and I was worried he might delete the original repo. So as opposed to forking, I've just continued committing on the existing repo history to [credit all the original authors](https://github.com/xero/bash-bible/graphs/contributors).
+I do a lot of shell scripting, both personally and professionally. I've cited the, now defunct, original [Pure Bash Bible](https://github.com/dylanaraps/pure-bash-bible) a lot. But wished it had more general reference and tutorial type content. The author/maintainer [rage quit the internet](https://github.com/dylanaraps/dylanaraps/commit/811599cc564418e242f23a11082299323e7f62f8), and I was worried he might delete the original repo. So as opposed to forking, I've just continued committing on the existing repo history to [credit all the original authors](https://github.com/xero/bash-bible/graphs/contributors). I also wanted to learn more about Github Pages and jekyll theme development.
 
 ## Hacking
 
