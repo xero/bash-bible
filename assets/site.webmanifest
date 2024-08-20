@@ -1,0 +1,20 @@
+{
+	"name": "Bash Bible",
+	"short_name": "Bash Bible",
+	"icons": [
+		{
+			"src": "assets/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "assets/android-chrome-384x384.png",
+			"sizes": "384x384",
+			"type": "image/png"
+		}
+	],
+	"theme_color": "#222222",
+	"background_color": "#222222",
+	"start_url": "https://xero.github.io/bash-bible",
+	"display": "standalone"
+}

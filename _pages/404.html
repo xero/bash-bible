@@ -1,0 +1,35 @@
+---
+permalink: /404.html
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{ site.title }} | {{ site.description }}</title>
+	<link rel="shortcut icon" href="assets/favicon.ico">
+	<meta name="theme-color" content="#222222">
+	<meta http-equiv="refresh" content="0;URL='{{ site.url }}'" />
+	<style>
+		* {
+			font-family: "Menlo", "Monaco", "Consolas", "Liberation Mono";
+		}
+		body {
+			background: #222;
+			color: #c0c0c0;
+			margin: 5%;
+		}
+		h1 {
+			color: #6688aa;
+			font-weight: bold;
+			font-size: 1.75em;
+		}
+	</style>
+</head>
+<body>
+	<h1>404</h1>
+	<p>redirecting to: <a href="{{ site.url }}">{{ site.url }}</a></p>
+</body>
+</html>

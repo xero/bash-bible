@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta property="og:image" content="assets/bash.png" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{{ site.title }} | {{ site.description }}</title>
+	<meta property="og:title" content="{{ site.title }}" />
+	<meta property="og:locale" content="en_US" />
+	<meta name="description" content="{{ site.description }}" />
+	<meta property="og:description" content="{{ site.description }}" />
+	<link rel="canonical" href="{{ site.url }}" />
+	<meta property="og:url" content="{{ site.url }}" />
+	<meta property="og:site_name" content="{{ site.title }}" />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary" />
+	<meta property="twitter:title" content="{{ site.title }}" />
+	<link rel="stylesheet" type="text/css" href="assets/main.css">
+	<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">
+	<link rel="manifest" href="assets/site.webmanifest">
+	<link rel="mask-icon" href="assets/safari-pinned-tab.svg" color="#222222">
+	<link rel="shortcut icon" href="assets/favicon.ico">
+	<meta name="msapplication-TileColor" content="#c0c0c0">
+	<meta name="msapplication-config" content="assets/browserconfig.xml">
+	<meta name="theme-color" content="#222222">
+	<script type="application/ld+json">
+	{
+		"@context": "https://schema.org",
+		"@type": "WebSite",
+		"description": "{{ site.description }}",
+		"headline": "{{ site.title }} | {{ site.description }}",
+		"name": "{{ site.tile }},
+		"url": "{{ site.url }}"
+	}
+	</script>
+</head>
+<body>
+	<aside id="toc" tabindex="1">
+		<input type="checkbox" id="toggle">
+		<label for="toggle" id="hide"></label>
+		<h3 id="table-of-contents">Table of Contents</h3>
+		<section id="full">
+{% include toc.html content=page.content %}
+		</section>
+	</aside>
+	<header>
+		<h1 id="pure-bash-bible"><i class="bash"></i> {{ site.title }}</h1>
+		<p><kbd>{reference,survival}</kbd> guide to scripting in the bash shell</p>
+	</header>
+	<main>
+		{{ content }}
+		<h1 id="afterword">Afterword</h1>
+		<p><i class="git"></i> Contribute to the project at: <a href="https://github.com/xero/bash-bible">github.com/xero/bash-bible</a></p>
+		<p><i class="rip"></i> The now defunct, original Pure Bash Bible was available <a href="https://github.com/dylanaraps/pure-bash-bible">here</a>. RIP ol'McDylan, <a href="https://github.com/dylanaraps/dylanaraps/commit/811599cc564418e242f23a11082299323e7f62f8">enjoy your farm</a></p>
+	</main>
+</body>
+</html>
