@@ -26,11 +26,17 @@ bundle exec jekyll build
 * favicons & images: [./assets](assets)
 
 ## Goals
-* Write more entry level content
-* Make [_includes/toc.html](_includes/toc.html) dynamically generated [like this](https://ranvir.xyz/blog/creating-table-of-content-in-jekyll-blog-without-plugin/)
+* Content ideas:
+    * Script setup (shebang, chmod +x, etc)
+    * Tools including [linters](https://github.com/koalaman/shellcheck), [formatters](https://github.com/mvdan/sh#shfmt), and [bash langugage server](https://github.com/bash-lsp/bash-language-server)
+    * Bestow the power of [BASHOPTS](https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
+    * Immutable global variables `readonly`
+    * Script formatting (expression breaks with `\`)
+* Make [./_includes/toc.html](_includes/toc.html) dynamically generated [like this](https://ranvir.xyz/blog/creating-table-of-content-in-jekyll-blog-without-plugin/)
 * Combine the [pure sh bible](https://github.com/dylanaraps/pure-sh-bible) into this project:
-    * the Bash Bible & Posix Psalms
+    * _the Bash Bible & Posix Psalms_
 
 ## License
 The original project was MIT, and I'm sticking with that.
+
 I've kept Dylan, added my name, and a link to the full contributors list.
