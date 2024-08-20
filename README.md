@@ -1,7 +1,7 @@
 # Bash Bible 🐚📖
 `{reference,survival}` guide to scripting in the bash shell
 
-### View
+### Read
 
 * [https://xero.github.io/bash-bible](https://xero.github.io/bash-bible)
 * [raw github formatting](https://github.com/xero/bash-bible/blob/gh-pages/_pages/bible.md)
@@ -19,17 +19,18 @@ bundle install
 bundle exec jekyll build
 ```
 
-### Important Files
-* site content: [_pages/bible.md](_pages/bible.md)
-* theme css: [_sass/bible.scss](_sass/bible.scss)
-* dom skeleton: [_layouts/bible.html](_layouts/bible.html)
-* favicons & images: [assets](assets)
+### Files
+* site content: [./_pages/bible.md](_pages/bible.md)
+* theme css: [./_sass/bible.scss](_sass/bible.scss)
+* dom skeleton: [./_layouts/bible.html](_layouts/bible.html)
+* favicons & images: [./assets](assets)
 
 ## Goals
 * Write more entry level content
 * Make [_includes/toc.html](_includes/toc.html) dynamically generated [like this](https://ranvir.xyz/blog/creating-table-of-content-in-jekyll-blog-without-plugin/)
-* Combine the [pure sh bible](https://github.com/dylanaraps/pure-sh-bible) into this project.
-    * the bash bible & posix psalms
+* Combine the [pure sh bible](https://github.com/dylanaraps/pure-sh-bible) into this project:
+    * the Bash Bible & Posix Psalms
 
 ## License
-The original project was MIT, and I'm sticking with that. I've kept Dylan, added my name, and a link to the contributors list as well.
+The original project was MIT, and I'm sticking with that.
+I've kept Dylan, added my name, and a link to the full contributors list.
