@@ -69,8 +69,10 @@ blockquote {
   padding: 1px 18px;
   display: inline-block;
 
+  b,
   strong {
     color: #90b0d1;
+    padding-left: 0.4em;
 
     &:before {
       content: "\f421";
@@ -79,6 +81,7 @@ blockquote {
 
   &.caveat strong {
     color: #c80;
+    padding-left: 0.4em;
 
     &:before {
       content: "\f421";

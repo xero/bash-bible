@@ -15,6 +15,8 @@ Shell scripting can sometimes feel esoteric, cryptic, unintuitive, and error-pro
 
 # Subshells
 
+<p></p>
+
 > **NOTE:** _"everything"_ in `bash` is a subshell
 
 ## What is a subshell?
@@ -41,7 +43,7 @@ $ ls /somewhere
 
 The copy of `bash` will inherit the environment from the "main bash" process. With All environment variables copied to the new process.
 
-> **NOTE:** This process is called **forking**.
+> **NOTE:** This process is called _forking_
 
 For a short moment, you have a process tree similar to:
 
@@ -61,7 +63,7 @@ the "bash (copy)" subshell replaces itself with the `ls` program, then executes 
 
 These two steps result in one program being run. The copy of the environment from the first step (forking) becomes the environment for the final running program (in this case, `ls`).
 
-In this example, the `ls` program runs inside its own environment, it can't affect the environment of its parent process (in this case, `bash`). The state of the shelll environment is copied as `ls` executes. Nothing is _"copied back"_ to the parent environment when `ls` terminates.
+In this example, the `ls` program runs inside its own environment, it can't affect the environment of its parent process (in this case, `bash`). The state of the shell environment is copied as `ls` executes. Nothing is _"copied back"_ to the parent environment when `ls` terminates.
 
 ## Parentheses and curly braces
 
@@ -305,9 +307,11 @@ large number of use-cases.
 > **CAVEAT:** This is one of the few platform dependent `bash` features.
 `**** ash` will use whatever regex engine is installed on the user's system.
 Stick to POSIX regex features if aiming for compatibility.
+{: .caveat }
 
 > **CAVEAT:** This example only prints the first matching group. When using
 multiple capture groups some modification is needed.
+{: .caveat }
 
 **Example Function:**
 
@@ -737,6 +741,7 @@ allows us to effectively remove array duplicates.
 > **NOTE:** Requires `bash` 4+
 
 > **CAVEAT:** List order may not stay the same.
+{: .caveat }
 
 **Example Function:**
 
@@ -926,6 +931,7 @@ shopt -u globstar
 # File Handling
 
 > **CAVEAT:** `bash` does not handle binary data properly in versions `< 4.4`.
+{: .caveat }
 
 ## Read a file to a string
 
@@ -1847,6 +1853,7 @@ $ get_term_size
 ## Get the terminal size in pixels
 
 > **CAVEAT:** This does not work in some terminal emulators.
+{: .caveat }
 
 **Example Function:**
 
@@ -2154,6 +2161,7 @@ black
 ## Generate a UUID V4
 
 > **CAVEAT:** The generated value is not cryptographically secure.
+{: .caveat }
 
 **Example Function:**
 
