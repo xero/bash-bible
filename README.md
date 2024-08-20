@@ -1,14 +1,14 @@
 # Bash Bible 🐚📖
 `{reference,survival}` guide to scripting in the bash shell
 
-## History
-The original, now defunct, [Pure Bash Bible](https://github.com/dylanaraps/pure-bash-bible) :headstone: was a project by a fellow nixer. When citing it to my novice-level bash scripting colleagues, they often lacked the necessary context to understand. I wished that it had more intro level, general reference materials. and maybe more flair ;D
+### [https://xero.github.io/bash-bible](https://xero.github.io/bash-bible)
 
-When the project author/maintainer [rage quit the internet](https://github.com/dylanaraps/dylanaraps/commit/811599cc564418e242f23a11082299323e7f62f8), I was worried he might delete the original repo. Instead of forking, I cloned and continued committing to the existing repo history to retain some [credit to all the original authors](https://github.com/xero/bash-bible/graphs/contributors).
+## History
+The original, now defunct, [Pure Bash Bible](https://github.com/dylanaraps/pure-bash-bible) was a project by a fellow nixer. When citing it to my novice-level bash scripting colleagues, they often lacked the necessary context to understand. I wished that it had more intro level, general reference materials. and maybe more flair ;D
+
+When the project author/maintainer [rage quit the internet](https://github.com/dylanaraps/dylanaraps/commit/811599cc564418e242f23a11082299323e7f62f8), I was worried he might delete the original repo. Instead of forking, I cloned and continued committing to the existing repo history to retain some [credit to all the original authors](https://github.com/xero/bash-bible/graphs/contributors).
 
 ## Hacking
-
-### Setup
 Install with [bundle](https://bundler.io), then run [jekyll](https://jekyllrb.com) build
 
 ```sh
@@ -25,3 +25,8 @@ bundle exec jekyll build
 ## Goals
 * Write more entry level content
 * Make [_includes/toc.html](_includes/toc.html) dynamically generated [like this](https://ranvir.xyz/blog/creating-table-of-content-in-jekyll-blog-without-plugin/)
+* Combine the [pure sh bible](https://github.com/dylanaraps/pure-sh-bible) into this project.
+    * the bash bible & posix psalms
+
+## License
+The original project was MIT, and I'm sticking with that. I've kept Dylan, added my name, and a link to the contributors list as well.
