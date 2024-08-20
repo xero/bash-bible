@@ -14,9 +14,54 @@ Shell scripting can sometimes feel esoteric, cryptic, unintuitive, and error-pro
 <!-- CHAPTER START -->
 
 # Subshells
+
+> **NOTE:** _"everything"_ in `bash` is a subshell
+
 ## What is a subshell?
 
-A subshell, also known as a child shell, is a separate instance of the shell that is spawned from the current shell process. It inherits the environment and variables from its parent shell but operates independently, allowing for isolated execution of commands and scripts. When a subshell is created, it runs in a separate process, distinct from the parent shell. This means that any changes made to the environment within the subshell, such as modifying variables or defining functions, are isolated and do not persist in the parent shell after the subshell terminates.
+In UNIX `{,like}` systems processes are a tree. Upon script evaluation, `bash` creates a parent process called a **shell**. Which in-turn can spawn it's own child process called a **subshell**. It's possible for one parent to spawn multiple subshells.
+
+A subshell, also known as a child shell, is a separate instance of the shell that is spawned from the current shell process. It inherits the environment and variables from its parent shell but operates independently, allowing for isolated execution of it's commands. When a subshell is created, it runs in a separate process, distinct from the parent shell.
+
+> **NOTE:** Any changes made to the environment within the subshell, such as modifying variables or defining functions, are isolated and do not persist in the parent shell after the subshell terminates.
+
+## Subshell environment
+
+Every subshell has it's own context memory, called an **environment**. Parents in the tree are responsible for their children, and provide them with a _copy_ of their entire environment which they base their own upon. This means, only variables that are part of the currently executing shell's environment are available in the child process.
+
+When you execute a program from the interactive `bash` prompt, e.g. `ls`
+
+```sh
+$ ls /somewhere
+````
+
+`Bash` performs two steps:
+* Makes a copy of itself (a subshell)
+* The copy replaces itself with the `ls` program
+
+The copy of `bash` will inherit the environment from the "main bash" process. With All environment variables copied to the new process.
+
+> **NOTE:** This process is called **forking**.
+
+For a short moment, you have a process tree similar to:
+
+```
+.
+└── bash
+    └── bash (copy)
+```
+
+the "bash (copy)" subshell replaces itself with the `ls` program, then executes it:
+
+```
+.
+└── bash
+    └── ls /somewhere
+```
+
+These two steps result in one program being run. The copy of the environment from the first step (forking) becomes the environment for the final running program (in this case, `ls`).
+
+In this example, the `ls` program runs inside its own environment, it can't affect the environment of its parent process (in this case, `bash`). The state of the shelll environment is copied as `ls` executes. Nothing is _"copied back"_ to the parent environment when `ls` terminates.
 
 ## Parentheses and curly braces
 
@@ -49,6 +94,7 @@ The bash built-in command can be used to start a subshell and execute commands w
 # Execute a subshell
 $ bash -c "ls; whoami"
 ```
+
 <!-- CHAPTER END -->
 
 <!-- CHAPTER START -->
@@ -256,11 +302,11 @@ John Black is my name.
 The result of `bash`'s regex matching can be used to replace `sed` for a
 large number of use-cases.
 
-**CAVEAT:** This is one of the few platform dependent `bash` features.
-`bash` will use whatever regex engine is installed on the user's system.
+> **CAVEAT:** This is one of the few platform dependent `bash` features.
+`**** ash` will use whatever regex engine is installed on the user's system.
 Stick to POSIX regex features if aiming for compatibility.
 
-**CAVEAT:** This example only prints the first matching group. When using
+> **CAVEAT:** This example only prints the first matching group. When using
 multiple capture groups some modification is needed.
 
 **Example Function:**
@@ -308,7 +354,7 @@ is_hex_color "$color" || color="#FFFFFF"
 
 ## Split a string on a delimiter
 
-**NOTE:** Requires `bash` 4+
+> **NOTE:** Requires `bash` 4+
 
 This is an alternative to `cut`, `awk` and other tools.
 
@@ -350,7 +396,7 @@ john
 
 ## Change a string to lowercase
 
-**NOTE:** Requires `bash` 4+
+> **NOTE:** Requires `bash` 4+
 
 **Example Function:**
 
@@ -376,7 +422,7 @@ hello
 
 ## Change a string to uppercase
 
-**NOTE:** Requires `bash` 4+
+> **NOTE:** Requires `bash` 4+
 
 **Example Function:**
 
@@ -402,7 +448,7 @@ HELLO
 
 ## Reverse a string case
 
-**NOTE:** Requires `bash` 4+
+> **NOTE:** Requires `bash` 4+
 
 **Example Function:**
 
@@ -652,7 +698,7 @@ fi
 Enabling `extdebug` allows access to the `BASH_ARGV` array which stores
 the current function’s arguments in reverse.
 
-**NOTE:** Requires `shopt -s compat44` in `bash` 5.0+.
+> **NOTE:** Requires `shopt -s compat44` in `bash` 5.0+.
 
 **Example Function:**
 
@@ -688,9 +734,9 @@ Create a temporary associative array. When setting associative array
 values and a duplicate assignment occurs, bash overwrites the key. This
 allows us to effectively remove array duplicates.
 
-**NOTE:** Requires `bash` 4+
+> **NOTE:** Requires `bash` 4+
 
-**CAVEAT:** List order may not stay the same.
+> **CAVEAT:** List order may not stay the same.
 
 **Example Function:**
 
@@ -879,7 +925,7 @@ shopt -u globstar
 
 # File Handling
 
-**CAVEAT:** `bash` does not handle binary data properly in versions `< 4.4`.
+> **CAVEAT:** `bash` does not handle binary data properly in versions `< 4.4`.
 
 ## Read a file to a string
 
@@ -1800,7 +1846,7 @@ $ get_term_size
 
 ## Get the terminal size in pixels
 
-**CAVEAT:** This does not work in some terminal emulators.
+> **CAVEAT:** This does not work in some terminal emulators.
 
 **Example Function:**
 
@@ -2107,7 +2153,7 @@ black
 
 ## Generate a UUID V4
 
-**CAVEAT:** The generated value is not cryptographically secure.
+> **CAVEAT:** The generated value is not cryptographically secure.
 
 **Example Function:**
 
