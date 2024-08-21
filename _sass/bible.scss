@@ -40,7 +40,7 @@ h2 {
   font-size: 1.3em;
 }
 
-h1 + h2 {
+h1+h2 {
   margin-top: 1em;
 }
 
@@ -69,19 +69,19 @@ blockquote {
   padding: 1px 18px;
   display: inline-block;
 
-  b,
-  strong {
-    color: #90b0d1;
-    padding-left: 0.4em;
+  strong>em {
+    color: #87ceeb;
+    font-style: normal;
 
     &:before {
       content: "\f421";
+      margin-right: 10px;
     }
   }
 
-  &.caveat strong {
+  &.caveat strong>em {
     color: #c80;
-    padding-left: 0.4em;
+    font-style: normal;
 
     &:before {
       content: "\f421";
@@ -113,34 +113,32 @@ blockquote {
   max-width: 50%;
   padding: 5px;
   overflow: scroll;
-  background: linear-gradient(
-    to bottom,
-    rgba(0, 0, 0, 1) 0%,
-    rgba(34, 34, 34, 0) 10%,
-    rgba(34, 34, 34, 0) 100%
-  );
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 1) 0%,
+      rgba(34, 34, 34, 0) 10%,
+      rgba(34, 34, 34, 0) 100%);
 
   details {
     display: block;
     font-size: 0.85em;
 
-    > summary {
+    >summary {
       list-style: none;
 
-      > b {
+      >b {
         font-weight: bold;
         color: #9a9557;
         background: none;
         font-size: 1.2em;
       }
 
-      b > a.heading {
+      b>a.heading {
         color: #c0c0c0;
         text-decoration: none;
         background: none;
       }
 
-      > b {
+      >b {
         padding: 0 0 0.3em 0.3em;
         color: #c0c0c0;
       }
@@ -203,11 +201,11 @@ blockquote {
     font-size: 2em;
   }
 
-  #toggle:checked ~ #hide:before {
+  #toggle:checked~#hide:before {
     content: "\f204";
   }
 
-  #toggle:checked ~ #full {
+  #toggle:checked~#full {
     display: block;
     overflow: scroll;
   }
@@ -276,6 +274,7 @@ table {
       font-size: large;
       font-weight: bold;
     }
+
     strong {
       color: #9a9557;
       padding: 0.2em;
@@ -322,6 +321,19 @@ table {
     font-weight: bold;
     background: #000;
   }
+
+  code {
+    background-color: #aa4450;
+    color: #000;
+    font-size: small;
+    font-weight: bold;
+    padding: 0 2px;
+
+    &:before {
+      content: "\f1755";
+      margin-right: 6px;
+    }
+  }
 }
 
 /* icons */
@@ -357,26 +369,13 @@ table {
   }
 }
 
-kbd,
 code {
   background-color: #111;
   color: #f8f8f2;
 }
 
-kbd,
-p > code {
+p>code {
   padding: 1px 5px;
-}
-
-#refs kbd {
-  background-color: #aa4450;
-  color: #000;
-  border: 1px solid #000;
-  font-size: small;
-
-  &:before {
-    content: "\f1755";
-  }
 }
 
 pre {

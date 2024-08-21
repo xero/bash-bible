@@ -17,7 +17,7 @@ Shell scripting can sometimes feel esoteric, cryptic, unintuitive, and error-pro
 
 <p></p>
 
-> **NOTE:** _"everything"_ in `bash` is a subshell
+> **_NOTE:_** _"everything"_ in `bash` is a subshell
 
 ## What is a subshell?
 
@@ -25,7 +25,7 @@ In UNIX `{,like}` systems processes are a tree. Upon script evaluation, `bash` c
 
 A subshell, also known as a child shell, is a separate instance of the shell that is spawned from the current shell process. It inherits the environment and variables from its parent shell but operates independently, allowing for isolated execution of it's commands. When a subshell is created, it runs in a separate process, distinct from the parent shell.
 
-> **NOTE:** Any changes made to the environment within the subshell, such as modifying variables or defining functions, are isolated and do not persist in the parent shell after the subshell terminates.
+> **_NOTE:_** Any changes made to the environment within the subshell, such as modifying variables or defining functions, are isolated and do not persist in the parent shell after the subshell terminates.
 
 ## Subshell environment
 
@@ -34,16 +34,16 @@ Every subshell has it's own context memory, called an **environment**. Parents i
 When you execute a program from the interactive `bash` prompt, e.g. `ls`
 
 ```sh
-$ ls /somewhere
+$ ls
 ````
 
 `Bash` performs two steps:
 * Makes a copy of itself (a subshell)
 * The copy replaces itself with the `ls` program
 
-The copy of `bash` will inherit the environment from the "main bash" process. With All environment variables copied to the new process.
+The copy of `bash` will inherit the environment from the "main bash" process, with all environment variables copied to the new subshell process.
 
-> **NOTE:** This process is called _forking_
+> **_NOTE:_** The replacement process is refereed to as **forking**
 
 For a short moment, you have a process tree similar to:
 
@@ -58,7 +58,7 @@ the "bash (copy)" subshell replaces itself with the `ls` program, then executes 
 ```
 .
 └── bash
-    └── ls /somewhere
+    └── ls
 ```
 
 These two steps result in one program being run. The copy of the environment from the first step (forking) becomes the environment for the final running program (in this case, `ls`).
@@ -304,12 +304,12 @@ John Black is my name.
 The result of `bash`'s regex matching can be used to replace `sed` for a
 large number of use-cases.
 
-> **CAVEAT:** This is one of the few platform dependent `bash` features.
-`**** ash` will use whatever regex engine is installed on the user's system.
+> **_CAVEAT:_** This is one of the few platform dependent `bash` features.
+`bash` will use whatever regex engine is installed on the user's system.
 Stick to POSIX regex features if aiming for compatibility.
 {: .caveat }
 
-> **CAVEAT:** This example only prints the first matching group. When using
+> **_CAVEAT:_** This example only prints the first matching group. When using
 multiple capture groups some modification is needed.
 {: .caveat }
 
@@ -358,7 +358,7 @@ is_hex_color "$color" || color="#FFFFFF"
 
 ## Split a string on a delimiter
 
-> **NOTE:** Requires `bash` 4+
+> **_NOTE:_** Requires `bash` 4+
 
 This is an alternative to `cut`, `awk` and other tools.
 
@@ -400,7 +400,7 @@ john
 
 ## Change a string to lowercase
 
-> **NOTE:** Requires `bash` 4+
+> **_NOTE:_** Requires `bash` 4+
 
 **Example Function:**
 
@@ -426,7 +426,7 @@ hello
 
 ## Change a string to uppercase
 
-> **NOTE:** Requires `bash` 4+
+> **_NOTE:_** Requires `bash` 4+
 
 **Example Function:**
 
@@ -452,7 +452,7 @@ HELLO
 
 ## Reverse a string case
 
-> **NOTE:** Requires `bash` 4+
+> **_NOTE:_** Requires `bash` 4+
 
 **Example Function:**
 
@@ -702,7 +702,7 @@ fi
 Enabling `extdebug` allows access to the `BASH_ARGV` array which stores
 the current function’s arguments in reverse.
 
-> **NOTE:** Requires `shopt -s compat44` in `bash` 5.0+.
+> **_NOTE:_** Requires `shopt -s compat44` in `bash` 5.0+.
 
 **Example Function:**
 
@@ -738,9 +738,9 @@ Create a temporary associative array. When setting associative array
 values and a duplicate assignment occurs, bash overwrites the key. This
 allows us to effectively remove array duplicates.
 
-> **NOTE:** Requires `bash` 4+
+> **_NOTE:_** Requires `bash` 4+
 
-> **CAVEAT:** List order may not stay the same.
+> **_CAVEAT:_** List order may not stay the same.
 {: .caveat }
 
 **Example Function:**
@@ -930,7 +930,7 @@ shopt -u globstar
 
 # File Handling
 
-> **CAVEAT:** `bash` does not handle binary data properly in versions `< 4.4`.
+> **_CAVEAT:_** `bash` does not handle binary data properly in versions `< 4.4`.
 {: .caveat }
 
 ## Read a file to a string
@@ -1324,10 +1324,10 @@ Contrary to popular belief, there is no issue in utilizing raw escape sequences.
 | -------- | ----------- | ----- |
 | `\e[<LINE>;<COLUMN>H` | Move cursor to absolute position. | **line**, **column**
 | `\e[H` | Move cursor to home position (**0,0**) |
-| `\e[<NUM>A` | Move cursor up N lines | **num***
-| `\e[<NUM>B` | Move cursor down N lines | **num***
-| `\e[<NUM>C` | Move cursor right N columns | **num***
-| `\e[<NUM>D` | Move cursor left N columns | **num***
+| `\e[<NUM>A` | Move cursor up N lines | **num**
+| `\e[<NUM>B` | Move cursor down N lines | **num**
+| `\e[<NUM>C` | Move cursor right N columns | **num**
+| `\e[<NUM>D` | Move cursor left N columns | **num**
 | `\e[s` | Save cursor position |
 | `\e[u` | Restore cursor position |
 
@@ -1852,7 +1852,7 @@ $ get_term_size
 
 ## Get the terminal size in pixels
 
-> **CAVEAT:** This does not work in some terminal emulators.
+> **_CAVEAT:_** This does not work in some terminal emulators.
 {: .caveat }
 
 **Example Function:**
@@ -2160,7 +2160,7 @@ black
 
 ## Generate a UUID V4
 
-> **CAVEAT:** The generated value is not cryptographically secure.
+> **_CAVEAT:_** The generated value is not cryptographically secure.
 {: .caveat }
 
 **Example Function:**
@@ -2301,25 +2301,25 @@ printf "%s\n" "${foo}" # BAR
 
 ## References and Further Reading
 
-- [The Bash-Hackers Wiki](https://web.archive.org/web/20230406205817/https://wiki.bash-hackers.org/) - Human-readable documentation of any kind about GNU Bash `[ARCHIVED]`.
-- [Bash beginner's mistakes](https://web.archive.org/web/20230330234404/https://wiki.bash-hackers.org/scripting/newbie_traps) - List of Bash beginner mistakes (by the Bash-Hackers Wiki) `[ARCHIVED]`.
-- [Bash Guide](http://mywiki.wooledge.org/BashGuide) - A bash guide for beginners (by Lhunath).
-- [Bash FAQ](http://mywiki.wooledge.org/BashFAQ) - Answers most of your questions (by Lhunath).
-- [Bash Pitfalls](http://mywiki.wooledge.org/BashPitfalls) - Lists the common pitfalls beginners fall into, and how to avoid them.
-- [Bash manual](http://www.gnu.org/software/bash/manual/) - Bourne-Again Shell manual.
-- [Bash FAQ](http://tiswww.case.edu/php/chet/bash/FAQ) (by [Chet Ramey](http://tiswww.case.edu/php/chet/))
-- [Advanced Bash-Scripting Guide](http://tldp.org/LDP/abs/html/) - An in-depth exploration of the art of shell scripting.
-- [Bash Guide for Beginners](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/) - Bash guide for beginners (by Machtelt Garrels).
-- [Bash Programming - Intro/How-to](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html#toc)
-- [bash-handbook](https://github.com/denysdovhan/bash-handbook) - A handbook for those who want to learn Bash without diving in too deeply.
-- [Google's Shell Style Guide](https://google.github.io/styleguide/shellguide.html) - Reasonable advice about code style.
-- [Sobell's Book](http://www.sobell.com/CR3/index.html) - A practical guide to commands, editors, and shell programming.
-- [WikiBooks: Bash Shell Scripting](https://en.wikibooks.org/wiki/Bash_Shell_Scripting)
-- [Use the Unofficial Bash Strict Mode (Unless You Looove Debugging)](http://redsymbol.net/articles/unofficial-bash-strict-mode/)
-- [learnyoubash](https://github.com/denysdovhan/learnyoubash) - An interactive workshopper which will teach you how to use the terminal and write your the first Bash script.
-- [Defensive BASH Programming](https://web.archive.org/web/20180917174959/http://www.kfirlavi.com/blog/2012/11/14/defensive-bash-programming) - Methods to defend your programs from breaking as well as keeping the code tidy and clean.
-- [explainshell](https://explainshell.com) - A website that breaks down and explains shell / `bash` commands (including their flags and options).
-- [Safe ways to do things in bash](https://github.com/anordal/shellharden/blob/master/how_to_do_things_safely_in_bash.md) - How to do things safely in Bash (by the shellharden team).
+- [The Bash-Hackers Wiki](https://web.archive.org/web/20230406205817/https://wiki.bash-hackers.org/) The most human-readable documentation of any kind about Bash `ARCHIVED`
+- [Bash beginner's mistakes](https://web.archive.org/web/20230330234404/https://wiki.bash-hackers.org/scripting/newbie_traps) by the Bash-Hackers Wiki `ARCHIVED`
+- [Bash Guide](http://mywiki.wooledge.org/BashGuide) Excellent guide by Lhunath
+- [Bash FAQ](http://mywiki.wooledge.org/BashFAQ) Lhunath answers many common questions
+- [Bash Pitfalls](http://mywiki.wooledge.org/BashPitfalls) Discusses common pitfalls beginners fall into, and how to avoid them.
+- [Bash manual](http://www.gnu.org/software/bash/manual/) Official GNU Bourne-Again Shell manual.
+- [Bash FAQ](http://tiswww.case.edu/php/chet/bash/FAQ) by Chet Ramey
+- [Advanced Bash-Scripting Guide](http://tldp.org/LDP/abs/html/) An in-depth exploration of the art of shell scripting
+- [Bash Guide for Beginners](http://www.tldp.org/LDP/Bash-Beginners-Guide/html/) by Machtelt Garrels
+- [Bash Programming - Intro/How-to](http://tldp.org/HOWTO/Bash-Prog-Intro-HOWTO.html#toc) Intermediate scripting by TLDP
+- [bash-handbook](https://github.com/denysdovhan/bash-handbook) A handbook for those who want to learn Bash without diving in too deeply
+- [Google's Shell Style Guide](https://google.github.io/styleguide/shellguide.html) Reasonable advice about code style
+- [Sobell's Book](http://www.sobell.com/CR3/index.html) A practical guide to commands, editors, and shell programming
+- [WikiBooks: Bash Shell Scripting](https://en.wikibooks.org/wiki/Bash_Shell_Scripting) All the citations
+- [Use the Unofficial Bash Strict Mode](http://redsymbol.net/articles/unofficial-bash-strict-mode/) _"Unless You Looove Debugging"_
+- [learnyoubash](https://github.com/denysdovhan/learnyoubash) Interactive workshop for using the shell and writing your the first bash script
+- [Defensive BASH Programming](https://web.archive.org/web/20180917174959/http://www.kfirlavi.com/blog/2012/11/14/defensive-bash-programming) Defend your code from breakages while keeping it clean `ARCHIVED`
+- [explainshell](https://explainshell.com) A website that breaks down shell commands, including their flags and options
+- [Safe ways to do things in bash](https://github.com/anordal/shellharden/blob/master/how_to_do_things_safely_in_bash.md) by the shellharden team
 {: #refs }
 
 <!-- CHAPTER END -->
