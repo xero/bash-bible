@@ -1729,13 +1729,13 @@ function do_something() {
 
 # Internal Variables
 
-## Get the location to the `bash` binary
+## Get the location to the bash binary
 
 ```sh
 "$BASH"
 ```
 
-## Get the version of the current running `bash` process
+## Get the version of the current running bash process
 
 ```sh
 # As a string.
@@ -1947,7 +1947,7 @@ $ rgb_to_hex "255" "255" "255"
 
 # Code Golf
 
-## Shorter `for` loop syntax
+## Shorter for loop syntax
 
 ```sh
 # Tiny C Style.
@@ -1994,7 +1994,7 @@ f()if true; then echo "$1"; fi
 f()for i in "$@"; do echo "$i"; done
 ```
 
-## Shorter `if` syntax
+## Shorter if syntax
 
 ```sh
 # One line
@@ -2014,7 +2014,7 @@ f()for i in "$@"; do echo "$i"; done
 }
 ```
 
-## Simpler `case` statement to set variable
+## Case statement variable assignment
 
 The `:` built-in can be used to avoid repeating `variable=` in a case statement. The `$_` variable stores the last argument of the last command. `:` always succeeds so it can be used to store the variable value.
 
@@ -2053,7 +2053,7 @@ os="$_"
 
 # Misc
 
-## Use `read` as an alternative to the `sleep` command
+## Use read as an alternative to the sleep command
 
 Surprisingly, `sleep` is an external command and not a `bash` built-in.
 
@@ -2114,7 +2114,7 @@ if ! type -p convert &>/dev/null; then
 fi
 ```
 
-## Get the current date using `strftime`
+## Get the current date using strftime
 
 Bash’s `printf` has a built-in method of getting the date which can be used in place of the `date` command.
 
