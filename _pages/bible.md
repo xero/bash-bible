@@ -2299,7 +2299,7 @@ printf "%s\n" "${foo}" # BAR
 
 <!-- CHAPTER START -->
 
-## References and Further Reading
+# References and Further Reading
 
 - [The Bash-Hackers Wiki](https://web.archive.org/web/20230406205817/https://wiki.bash-hackers.org/) The most human-readable documentation of any kind about Bash `ARCHIVED`
 - [Bash beginner's mistakes](https://web.archive.org/web/20230330234404/https://wiki.bash-hackers.org/scripting/newbie_traps) by the Bash-Hackers Wiki `ARCHIVED`

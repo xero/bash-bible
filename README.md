@@ -32,7 +32,6 @@ bundle exec jekyll build
     * Bestow the power of [BASHOPTS](https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
     * Immutable global variables `readonly`
     * Script formatting (expression breaks with `\`)
-* Make [./_includes/toc.html](_includes/toc.html) dynamically generated [like this](https://ranvir.xyz/blog/creating-table-of-content-in-jekyll-blog-without-plugin/)
 * Combine the [pure sh bible](https://github.com/dylanaraps/pure-sh-bible) into this project:
     * _the Bash Bible & Posix Psalms_
 
