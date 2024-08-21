@@ -37,11 +37,11 @@
 						{% assign index = forloop.index | minus: 1 %}
 						{% assign next = index | plus: 1 %}
 						{% if toc_types[index] == "h1" %}
-<details><summary><b>
+<details><summary><strong>
 								{% if toc_types[next] == "h1" %}
-<a class="heading" href="#{{ toc_ids[index] }}">{{ title }}</a><a class="link" href="#{{ toc_ids[index] }}"></a></b></summary></details>
+<a class="heading" href="#{{ toc_ids[index] }}">{{ title }}</a><a class="link" href="#{{ toc_ids[index] }}"></a></strong></summary></details>
 								{% else %}
-{{ title }}<a class="link" href="#{{ toc_ids[index] }}"></a></b></summary><ul>
+{{ title }}<a class="link" href="#{{ toc_ids[index] }}"></a></strong></summary><ul>
 								{% endif %}
 						{% else %}
 <li><a href="#{{ toc_ids[index] }}">{{ title }}</a></li>
@@ -50,5 +50,5 @@
 								{% endif %}
 						{% endif %}
 				{% endfor %}
-<details><summary><b><a class="heading" href="#afterword">Afterword</a><a class="link" href="#afterword"></a></b></summary></details>
+<details><summary><strong><a class="heading" href="#afterword">Afterword</a><a class="link" href="#afterword"></a></strong></summary></details>
 {% endif %}

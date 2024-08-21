@@ -110,7 +110,7 @@ blockquote {
   right: 0;
   top: 0;
   height: 100%;
-  max-width: 50%;
+  max-width: 40%;
   padding: 5px;
   overflow: scroll;
   background: linear-gradient(to bottom,
@@ -125,21 +125,21 @@ blockquote {
     >summary {
       list-style: none;
 
-      >b {
+      >strong {
         font-weight: bold;
         color: #9a9557;
         background: none;
-        font-size: 1.2em;
+        font-size: 1.1em;
       }
 
-      b>a.heading {
+      strong>a.heading {
         color: #c0c0c0;
         text-decoration: none;
         background: none;
       }
 
-      >b {
-        padding: 0 0 0.3em 0.3em;
+      >strong {
+        padding: 0 0 0.3em 0;
         color: #c0c0c0;
       }
 
@@ -150,7 +150,7 @@ blockquote {
       &:before {
         color: #9a9557;
         content: "\f1183";
-        font-size: x-large;
+        font-size: large;
       }
     }
   }
@@ -222,11 +222,6 @@ blockquote {
       padding-left: 0;
     }
 
-    kbd {
-      background: none;
-      color: inherit;
-    }
-
     li {
       padding: 0 1em;
       text-indent: -1em;
@@ -263,6 +258,13 @@ table {
     background-color: #000;
   }
 
+  td:first-of-type {
+    &:has(> code) {
+      min-width: 15%;
+      max-width: 30%;
+    }
+  }
+
   td {
     padding: 0.5em 0.5em 1em 0.5em;
     vertical-align: middle;
@@ -293,6 +295,15 @@ table {
 
   tbody td {
     line-height: 2em;
+  }
+
+  &.special {
+    td:first-of-type {
+      &:has(> code) {
+        width: 20%;
+        vertical-align: top;
+      }
+    }
   }
 }
 
@@ -493,6 +504,14 @@ pre {
     font-size: 0.8em;
   }
 
+  h1 {
+    font-size: 1.5em;
+  }
+
+  header h1 {
+    font-size: 2.5em;
+  }
+
   #toc {
     max-width: 80%;
   }
@@ -506,10 +525,6 @@ pre {
       font-size: 0.8em;
       font-size: 1em;
     }
-  }
-
-  #special td:has(> code) {
-    font-size: 1em;
   }
 
   #refs kbd {

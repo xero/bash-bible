@@ -1,4 +1,5 @@
 <!doctype html>
+{% assign cacheBust = site.time | date:'?x=%s' %}
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -16,7 +17,7 @@
 	<meta property="og:type" content="website" />
 	<meta name="twitter:card" content="summary" />
 	<meta property="twitter:title" content="{{ site.title }}" />
-	<link rel="stylesheet" type="text/css" href="assets/main.css">
+	<link rel="stylesheet" href="{{ "assets/main.css" | append: cacheBust }}">
 	<link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="assets/favicon-16x16.png">

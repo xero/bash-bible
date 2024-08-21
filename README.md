@@ -30,6 +30,16 @@ bundle exec jekyll build
     * Script setup (shebang, chmod +x, etc)
     * Tools including [linters](https://github.com/koalaman/shellcheck), [formatters](https://github.com/mvdan/sh#shfmt), and [bash langugage server](https://github.com/bash-lsp/bash-language-server)
     * Bestow the power of [BASHOPTS](https://www.gnu.org/software/bash/manual/html_node/The-Shopt-Builtin.html)
+    * tests `[[ ]]`
+    * `echo` vs `printf`
+    * redirections `>, >>, <` and std`{out,in}`
+    * Closing File Descriptors
+```sh
+n<&- Close input file descriptor n.
+0<&- or <&- Close stdin.
+```
+    * `: | misbehaving_program`
+        * `:` is an internal command of the shell that does nothing. It lets you introduce comments, or can be used for redirections. For example ": > file" creates an empty file. Or `: |` in this case feeds an empty stream to the command
     * Immutable global variables `readonly`
     * Script formatting (expression breaks with `\`)
 * Combine the [pure sh bible](https://github.com/dylanaraps/pure-sh-bible) into this project:
