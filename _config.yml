@@ -5,6 +5,9 @@ collections:
   pages:
     output: true
     permalink: :path
+exclude:
+  - README.md
+  - LICENSE.txt
 highlighter: rouge
 kramdown:
   math_engine: mathjax
