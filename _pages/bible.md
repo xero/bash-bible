@@ -43,7 +43,7 @@ $ ls
 
 The copy of `bash` will inherit the environment from the "main bash" process, with all environment variables copied to the new subshell process.
 
-> **_NOTE:_** The replacement process is refereed to as **forking**
+> **_NOTE:_** The replacement process is referred to as **forking**
 
 For a short moment, you have a process tree similar to:
 
@@ -194,47 +194,138 @@ Some characters are evaluated by Bash to have a non-literal meaning. Instead, th
 
 | Characters | Description |
 | ---------- | ----------- |
-| `" "` | **Whitespace** this is a tab, newline, vertical tab, form feed, carriage return, or space. Bash uses whitespace to determine where words begin and end. The first word is the command name and additional words become arguments to that command.
-| `$` | **Expansion** introduces various types of expansion: parameter expansion (e.g. $var or ${var}), command substitution (e.g. $(command)), or arithmetic expansion (e.g. $((expression))). see: [ expansions](#parameter-expansions)
+| `" "` | **Whitespace** this is a _"tab", "newline", "vertical tab", "form feed", "carriage return",_ or _"space"_. Bash uses whitespace to determine where words begin and end. The first word is the command name and additional words become arguments to that command.
+| `$` | **Expansion** a _"dollar sign"_ introduces various types of expansion: parameter expansion (e.g. `$var` or `${var}`), command substitution (e.g. `$(command)`), or arithmetic expansion (e.g. `$((expression))`). see: [parameter expansion](#parameter-expansion)
 | `''` | **Single Quotes** protect the text inside them so that it has a literal meaning. With them, generally any kind of interpretation by Bash is ignored: special characters are passed over and multiple words are prevented from being split.
 | `""` | **Double Quotes** protect the text inside them from being split into multiple words or arguments, yet allow substitutions to occur; the meaning of most other special characters is usually prevented.
-| `\` | **Escape** (backslash) prevents the next character from being interpreted as a special character. This works outside of quoting, inside double quotes, and generally ignored in single quotes.
-| `#` | **Comment** the # character begins a commentary that extends to the end of the line. Comments are notes of explanation and are not processed by the shell.
-| `=` | **Assignment** assign a value to a variable (e.g. logdir=/var/log/myprog). Whitespace is not allowed on either side of the = character.
-| `[[ ]]` | **Test** an evaluation of a conditional expression to determine whether it is "true" or "false". Tests are used in Bash to compare strings, check the existence of a file, etc.
-| `!` | **Negate** used to negate or reverse a test or exit status. For example: ! grep text file; exit $?.
+| `\` | **Escape** _"backslash"_ prevents the next character from being interpreted as a special character. This works outside of quoting, inside double quotes, and generally ignored in single quotes.
+| `#` | **Comment** the _"pound sign"_ begins a commentary that extends to the end of the line. Comments are notes of explanation and are not processed by the shell.
+| `=` | **Assignment** assign a value to a variable (e.g. `logdir=/var/log/myprog`). Whitespace is not allowed on either side of the = character.
+| `[[ ]]` | **Test** an evaluation of a conditional expression to determine whether it is `true` or `false`. Tests are used in Bash to compare strings, check the existence of a file, etc.
+| `!` | **Negate** (or _"bang"_) is used to negate or reverse a test or exit status. e.g. `! grep text file; exit $?`
 | `>, >>, <` | **Redirection** redirect a command's output or input to a file.
-| `|` | **Pipe** send the output from one command to the input of another command. This is a method of chaining commands together. Example: echo **Hello beautiful" \| grep -o beautiful**
-| `;` | **Command Separator** used to separate multiple commands that are on the same line.
+| `<<` | **HereDoc** or _"hearfile"_ is a `{file,input}` literal, a section of code treated as a seperate file. The syntax is `<< delimiter` then a line break. All subsequent lines will be redirected until the delimiter (usually `EOF`) is found at the start of a line.
+| `<<<` | **HereString** effects input redirection from a word (or quoted string). It's key difference between a heredoc is that herestrings have no delimeter.
+| `|` | **Pipe** send the output from one command to the input of another command. This is a method of chaining commands together. e.g. `echo hello beautiful" | grep -o beautiful`
+| `;` | **Command Separator** _"semicolon"_ is used to separate multiple commands that are on the same line.
 | `{ }` | **Inline Group** commands inside the curly braces are treated as if they were one command. It is convenient to use these when Bash syntax requires only one command and a function doesn't feel warranted.
 | `( )` | **Subshell Group** similar to the above but where commands within are executed in a subshell (a new process). Used much like a sandbox, if a command causes side effects (like changing variables), it will have no effect on the current shell.
-| `(( ))` | **Arithmetic Expression** with an arithmetic expression, characters such as +, -, *, and / are mathematical operators used for calculations. They can be used for variable assignments like (( a = 1 + 4 )) as well as tests like if (( a < b )). see [arithmetic](#arithmetic-1)
-| `$(( ))` | **Arithmetic Expansion** Comparable to the above, but the expression is replaced with the result of its arithmetic evaluation. Example: echo "The average is $(( (a+b)/2 ))".
-| `*, ?` | **Globs** "wildcard" characters which match parts of filenames (e.g. ls *.txt).
-| `~` | **Home** directory the tilde is a representation of a home directory. When alone or followed by a /, it means the current user's home directory; otherwise, a username must be specified (e.g. ls ~/Documents; cp ~john/.bashrc .).
-| `&` | **Background** when used at the end of a command, run the command in the background (do not wait for it to complete).
+| `(( ))` | **Arithmetic Expression** with an arithmetic expression, characters such as `+`, `-`, `*`, and `/` are mathematical operators used for calculations. They can be used for variable assignments e.g. `(( a = 1 + 4 ))` as well as tests like `if (( a < b ))`. see [arithmetic](#arithmetic)
+| `$(( ))` | **Arithmetic Expansion** Comparable to the above, but the expression is replaced with the result of its arithmetic evaluation. e.g. `echo "The average is $(( (a+b)/2 ))"`
+| `*, ?` | **Globs** _"wildcard"_ characters which match parts of filenames. e.g. `ls *.txt`
+| `~` | **Home Directory** _"tilde"_ is a representation of a home directory. When alone or followed by a `/`, it means the current user's home directory; otherwise, a username must be specified. e.g. `ls ~/downloads; cp ~john/.bashrc .`
+| `&` | **Background** when a command is suffixed with an  _"ampersand"_, it is processed in the background. The script continues to run and does not wait for it to complete. Useful for long running processes, launching daemons, and task parallelization.
+| `:` | **NOOP** the _"colon"_ symbol is an internal command of the shell that does nothing, yet is powerful. In `bash` is is functionally equivalent to `true`, but is often faster.
 {: .special }
 
-Examples:
+**Examples:**
 
 ```sh
 $ LOGNAME="LOG"
-$ echo "I am "$LOGNAME""
-I am LOG
-$ echo 'I am $LOGNAME'
-I am $LOGNAME
+$ echo "it is: $LOGNAME"
+it is: LOG
+
+$ echo 'it is: $LOGNAME'
+it is: $LOGNAME
+
 $ # ignore me
+
 $ echo An open\ \ \ space
 An open   space
-$ echo "My computer is $(hostname)"
-My computer is localhost
-$ echo "$STUFF" > file
-$ echo "append" >> file
+
+$ echo "my computer is $(hostname)"
+my computer is localhost
+
+$ echo "slacker" | sed 's/sl/h/'
+hacker
+
 $ echo $(( 5 + 5 ))
 10
-$ (( 5 > 0 )) && echo "Five is greater than zero."
-Five is greater than zero.
+
+$ (( 5 > 0 )) && echo "five is greater than zero."
+five is greater than zero.
+
+$ echo "$STUFF" > file
+$ echo "append" >> file
+
+$ tr a-z A-Z <<< one
+ONE
+
+$ tr a-z A-Z <<< 'one two three'
+ONE TWO THREE
+
+$ foo='one two three'
+$ tr a-z A-Z <<< "$foo"
+ONE TWO THREE
+
+$ tr a-z A-Z <<< 'one
+> two
+> three'
+ONE
+TWO
+THREE
+
+$ ./lauch-daemon &
+[1] 806033 # the background task id is displayed
+
+$ future_function() { :; }
+# stub implementation
+
+$ :> file.log
+# creates an empty file
+
+$ : | misbehaving_program
+# silences/ignores subshell exit codes
+
+$ : | cmd --
+# feeds an empty stream to a command
 ```
+
+the `:` in conjunction with a `heredoc` can be used to create multi-line comment blocks:
+```sh
+: << 'EOF'
+
+This part of the script is a commented out
+
+EOF
+```
+
+NOOP or `true` are both useful for infinite loops (that break or exit themselves):
+```sh
+while :; do
+    # do stuff
+    [[ ! "$test" ]] && break;
+done
+```
+
+`herestrings` are particularly useful for commands that often take short input, such as the calculator `bc`:
+
+```sh
+$ bc <<< 2^10
+1024
+```
+> **_NOTE:_** `herestring` behavior can also be accomplished by reversing the order and  piping the echo command:
+
+```sh
+$ echo 'one two three' | tr a-z A-Z
+ONE TWO THREE
+```
+> **_CAVEAT:_** `herestrings` are particularly useful when the last command needs to run in the current process, as is the case with the `read` builtin:
+{: .caveat }
+
+```sh
+$ echo 'one two three' | read -r a b c
+$ echo "$a $b $c"
+#
+```
+yields nothing, while
+
+```sh
+$ read -r a b c <<< 'one two three'
+$ echo "$a $b $c"
+one two three
+```
+This happens because in the previous example "piping" causes read to run in a subshell, and as such cannot affect the environment of the parent process.
 
 <!-- CHAPTER END -->
 
@@ -1521,7 +1612,7 @@ rm -rf ~/Downloads/{Movies,Music,ISOS}
 
 <!-- CHAPTER START -->
 
-# Arithmetic Operators
+# Arithmetic
 
 ## Assignment
 
@@ -1529,7 +1620,7 @@ rm -rf ~/Downloads/{Movies,Music,ISOS}
 | --------- | ----------- |
 | `=`       | Initialize or change the value of a variable
 
-## Arithmetic
+## Expression
 
 | Operators | Description |
 | --------- | ----------- |
@@ -1574,12 +1665,6 @@ rm -rf ~/Downloads/{Movies,Music,ISOS}
 | Operators | Description | Example |
 | --------- | ----------- | ------- |
 | `,` | Comma Separator | `((a=1,b=2,c=3))`
-
-<!-- CHAPTER END -->
-
-<!-- CHAPTER START -->
-
-# Arithmetic
 
 ## Simpler syntax to set variables
 

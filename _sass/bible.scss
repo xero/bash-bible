@@ -109,7 +109,8 @@ blockquote {
   position: fixed;
   right: 0;
   top: 0;
-  height: 100%;
+  min-height: 500px;
+  max-height: 100%;
   max-width: 40%;
   padding: 5px;
   overflow: scroll;
@@ -262,6 +263,11 @@ table {
     &:has(> code) {
       min-width: 15%;
       max-width: 30%;
+      background: #000;
+      text-align: center;
+      padding: 0.8em;
+      font-size: large;
+      font-weight: bold;
     }
   }
 
@@ -269,12 +275,8 @@ table {
     padding: 0.5em 0.5em 1em 0.5em;
     vertical-align: middle;
 
-    &:has(> code) {
-      background: #000;
-      text-align: center;
-      padding: 0.8em;
-      font-size: large;
-      font-weight: bold;
+    code {
+      padding: 2px 4px;
     }
 
     strong {
@@ -519,11 +521,13 @@ pre {
   table td {
     line-height: 2em;
 
-    &:has(> code) {
-      padding: 1em;
-      word-wrap: break-word;
-      font-size: 0.8em;
-      font-size: 1em;
+    &:first-child {
+      &:has(> code) {
+        padding: 1em;
+        word-wrap: break-word;
+        font-size: 0.8em;
+        font-size: 1em;
+      }
     }
   }
 

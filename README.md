@@ -33,15 +33,13 @@ bundle exec jekyll build
     * tests `[[ ]]`
     * `echo` vs `printf`
     * redirections `>, >>, <` and std`{out,in}`
+    * Immutable global variables `readonly`
+    * Scripting style formatting (expression breaks with `\`)
     * Closing File Descriptors
 ```sh
 n<&- Close input file descriptor n.
 0<&- or <&- Close stdin.
 ```
-    * `: | misbehaving_program`
-        * `:` is an internal command of the shell that does nothing. It lets you introduce comments, or can be used for redirections. For example ": > file" creates an empty file. Or `: |` in this case feeds an empty stream to the command
-    * Immutable global variables `readonly`
-    * Script formatting (expression breaks with `\`)
 * Combine the [pure sh bible](https://github.com/dylanaraps/pure-sh-bible) into this project:
     * _the Bash Bible & Posix Psalms_
 
